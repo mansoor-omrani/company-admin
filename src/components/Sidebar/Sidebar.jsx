@@ -29,8 +29,10 @@ class Sidebar extends Component {
       width: window.innerWidth
     };
   }
-  activeRoute(routeName) {
-    return this.props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
+  activeRoute(layout, path) {
+    const { location, routes } = this.props;
+
+    return location.pathname == layout + path ? "active" : (!routes.find(r => layout + r.path == location.pathname) && location.pathname.startsWith(layout + path) ? "active": "");
   }
   updateDimensions() {
     this.setState({ width: window.innerWidth });
@@ -50,9 +52,9 @@ class Sidebar extends Component {
         data-color={this.props.color}
         data-image={this.props.image}
       >
-          {this.props.hasImage ? (
-            <div className="sidebar-background" style={sidebarBackground} />
-          ) : (
+        {this.props.hasImage ? (
+          <div className="sidebar-background" style={sidebarBackground} />
+        ) : (
             null
           )}
         <div className="logo">
@@ -81,7 +83,7 @@ class Sidebar extends Component {
                     className={
                       prop.upgrade
                         ? "active active-pro"
-                        : this.activeRoute(prop.layout + prop.path)
+                        : this.activeRoute(prop.layout, prop.path)
                     }
                     key={key}
                   >

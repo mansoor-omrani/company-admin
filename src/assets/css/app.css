@@ -1,0 +1,41 @@
+.model-icon {
+    font-size: 28px;
+}
+.text-default {
+    color: black;
+}
+.cursor-default {
+    cursor: default;
+}
+.cursor-pointer {
+    cursor: pointer
+}
+.mr-5 { margin-right: 5px }
+.mr-10 { margin-right: 10px }
+.ml-5 { margin-left: 5px }
+.ml-10 { margin-left: 10px }
+.form-control {
+    height: 30px;
+    padding: 5px;
+}
+.btn-sm {
+    padding: 5px 2px;
+    min-width: 50px;
+    max-width: 60px;
+}
+.form-horizontal .readonly {
+    /* margin-top: 7px; */
+    overflow-wrap: break-word;
+    cursor: default;
+}
+table.entities td a {
+    color: #949494;
+}
+.form-group .form-section {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding-bottom: 3px;
+    cursor: default;
+}

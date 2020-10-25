@@ -4,21 +4,22 @@ import parse from 'url-parse';
 class AjaxUsingFetch extends AjaxBase {
     Post(url, data = null) {
         return new Promise((resolve, reject) => {
-            const formData = new FormData();
+            // const formData = new FormData();
 
-            if (data) {
-                for (var key of Object.keys(data)) {
-                    formData.append(key, data[key]);
-                }
-            }
+            // if (data) {
+            //     for (var key of Object.keys(data)) {
+            //         formData.append(key, data[key]);
+            //     }
+            // }
 
             fetch(url, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 credentials: 'same-origin',
-                body: formData
+                body: (data ? JSON.stringify(data) : '')
             }).then(function (response) {
                 if (response.ok) {
                     if (response.redirected) {
@@ -66,7 +67,10 @@ class AjaxUsingFetch extends AjaxBase {
                 }
             }).then(function (data) {
                 resolve(data);
-            }).catch(_ => reject());
+            }).catch(_ => {
+                console.log(_);
+                reject();
+            });
         });
     }
     buildUrl(url, parameters) {

@@ -73,6 +73,19 @@ class Admin extends Component {
       autoDismiss: 15
     });
   };
+  notify = (config) => {
+    this.state._notificationSystem.addNotification({
+      title: <span data-notify="icon" className="pe-7s-gift">{config.title}</span>,
+      message: (
+        <div>
+          {config.message}
+        </div>
+      ),
+      level: (config.level || 'info'),
+      position: (config.position || 'tr'),
+      autoDismiss: (config.duration || 5)
+    });
+  }
   getRoutes = routes => {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
@@ -83,6 +96,7 @@ class Admin extends Component {
               <prop.component
                 {...props}
                 handleClick={this.handleNotificationClick}
+                notify={this.notify}
               />
             )}
             key={key}
@@ -123,37 +137,37 @@ class Admin extends Component {
   };
   componentDidMount() {
     this.setState({ _notificationSystem: this.refs.notificationSystem });
-    var _notificationSystem = this.refs.notificationSystem;
-    var color = Math.floor(Math.random() * 4 + 1);
-    var level;
-    switch (color) {
-      case 1:
-        level = "success";
-        break;
-      case 2:
-        level = "warning";
-        break;
-      case 3:
-        level = "error";
-        break;
-      case 4:
-        level = "info";
-        break;
-      default:
-        break;
-    }
-    _notificationSystem.addNotification({
-      title: <span data-notify="icon" className="pe-7s-gift" />,
-      message: (
-        <div>
-          Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for
-          every web developer.
-        </div>
-      ),
-      level: level,
-      position: "tr",
-      autoDismiss: 15
-    });
+    // var _notificationSystem = this.refs.notificationSystem;
+    // var color = Math.floor(Math.random() * 4 + 1);
+    // var level;
+    // switch (color) {
+    //   case 1:
+    //     level = "success";
+    //     break;
+    //   case 2:
+    //     level = "warning";
+    //     break;
+    //   case 3:
+    //     level = "error";
+    //     break;
+    //   case 4:
+    //     level = "info";
+    //     break;
+    //   default:
+    //     break;
+    // }
+    // _notificationSystem.addNotification({
+    //   title: <span data-notify="icon" className="pe-7s-gift" />,
+    //   message: (
+    //     <div>
+    //       Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for
+    //       every web developer.
+    //     </div>
+    //   ),
+    //   level: level,
+    //   position: "tr",
+    //   autoDismiss: 15
+    // });
   }
   componentDidUpdate(e) {
     if (
@@ -174,8 +188,8 @@ class Admin extends Component {
       <div className="wrapper">
         <NotificationSystem ref="notificationSystem" style={style} />
         <Sidebar {...this.props} routes={routes} image={this.state.image}
-        color={this.state.color}
-        hasImage={this.state.hasImage}/>
+          color={this.state.color}
+          hasImage={this.state.hasImage} />
         <div id="main-panel" className="main-panel" ref="mainPanel">
           <AdminNavbar
             {...this.props}
@@ -183,7 +197,7 @@ class Admin extends Component {
           />
           <Switch>{this.getRoutes(routes)}</Switch>
           <Footer />
-          <FixedPlugin
+          {/* <FixedPlugin
             handleImageClick={this.handleImageClick}
             handleColorClick={this.handleColorClick}
             handleHasImage={this.handleHasImage}
@@ -192,7 +206,7 @@ class Admin extends Component {
             mini={this.state["mini"]}
             handleFixedClick={this.handleFixedClick}
             fixedClasses={this.state.fixedClasses}
-          />
+          /> */}
         </div>
       </div>
     );

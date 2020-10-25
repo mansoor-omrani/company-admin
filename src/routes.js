@@ -23,6 +23,9 @@ import Icons from "views/Icons.jsx";
 import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 import Upgrade from "views/Upgrade.jsx";
+import Works from "views/Works";
+import Features from "views/Features";
+import Forms from "views/Forms";
 
 const dashboardRoutes = [
   {
@@ -37,6 +40,27 @@ const dashboardRoutes = [
     name: "User Profile",
     icon: "pe-7s-user",
     component: UserProfile,
+    layout: "/admin"
+  },
+  {
+    path: "/works",
+    name: "Works",
+    icon: "pe-7s-note2",
+    component: Works,
+    layout: "/admin"
+  },
+  {
+    path: "/features",
+    name: "Features",
+    icon: "pe-7s-note2",
+    component: Features,
+    layout: "/admin"
+  },
+  {
+    path: "/features/carousel",
+    name: "Carousel",
+    icon: "pe-7s-repeat",
+    component: Features,
     layout: "/admin"
   },
   {
@@ -75,13 +99,21 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    upgrade: true,
-    path: "/upgrade",
-    name: "Upgrade to PRO",
-    icon: "pe-7s-rocket",
-    component: Upgrade,
+    path: "/forms",
+    name: "Forms",
+    icon: "pe-7s-graph",
+    component: Forms,
     layout: "/admin"
   }
+  // ,
+  // {
+  //   upgrade: true,
+  //   path: "/upgrade",
+  //   name: "Upgrade to PRO",
+  //   icon: "pe-7s-rocket",
+  //   component: Upgrade,
+  //   layout: "/admin"
+  // }
 ];
 
 export default dashboardRoutes;

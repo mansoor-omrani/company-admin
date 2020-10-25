@@ -1,8 +1,9 @@
-﻿import ServiceHub from './serviceHub';
+﻿import Locator from 'locustjs-locator';
+import { AjaxBase } from './ajax';
 
 class BaseService {
     constructor() {
-        this.ajax = ServiceHub.Ajax;
+        this.ajax = Locator.Instance.resolve(AjaxBase);
     }
     Post(url, data = null) {
         return this.ajax.Post(url, data);

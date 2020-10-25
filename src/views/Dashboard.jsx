@@ -17,7 +17,7 @@
 */
 import React, { Component } from "react";
 import ChartistGraph from "react-chartist";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Grid, Row, Col, Button } from "react-bootstrap";
 
 import { Card } from "components/Card/Card.jsx";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
@@ -59,6 +59,7 @@ class Dashboard extends Component {
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated now"
               />
+              <Button className="btn btn-secondary btn-fill1 btn-sm">Edit</Button>
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
